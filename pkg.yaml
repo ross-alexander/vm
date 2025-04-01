@@ -1,0 +1,1130 @@
+pkg:
+  base@:
+    - skel-dirs
+    - glibc
+    - libxcrypt
+    - kmod
+    - LVM2
+    - dash
+    - ncurses
+    - readline
+    - bash
+    - util-linux
+    - linux
+    - acl
+    - attr
+    - libtirpc
+    - Linux-PAM
+    - json-c
+    - libgcrypt
+    - p11-kit
+    - libffi
+    - zlib
+    - xz
+    - lz4
+    - zstd
+    - openssl
+    - libidn2
+    - dbus
+    - systemd
+    - coreutils
+    - pcre2
+    - grep
+    - gmp
+    - mpfr
+    - gawk
+    - sed
+    - tar
+    - tzdb
+    # - bzip2
+    # - brotli
+    - gzip
+    - e2fsprogs
+    # - xfsprogs
+    # - btrfs-progs
+    - pciutils
+    - procps
+    - mpc
+    - isl
+    - binutils
+    - gcc
+    - libtool
+    - libbsd
+    - libmd
+    - libmnl
+    - elfutils
+    - iproute2
+    - inetutils
+    - openssh
+    # - libssh
+    # - nettle
+    # - gnutls
+    - libxml2
+    - libwebp
+    - libpng
+    - tiff
+    - jpeg
+    # - libpsl
+    - wget
+    # - fmt
+    - Python
+    - perl
+    # - libunwind
+    # - dosfstools
+    # - strace
+    - libpcap
+    - tcpdump
+    - which
+    # - ethtool
+    - sudo
+    - findutils
+    - file
+    - vim
+    - emacs
+    # - gdbm
+    # - dmidecode
+    - iana-etc
+    - skel-files
+  network@:
+    - dhcp-4.4.1
+    - dhcpcd-7.0.7
+  python@:
+    deps:
+      - Python
+      - setuptools
+      - pip
+  sysvinit@:
+    - sysvinit
+    - eudev-3.2.5
+    - sysvinit-scripts
+
+  xlibs@:
+#    - libFS
+    - libICE
+    - libSM
+    - libX11
+    - libXau
+    - libXaw
+    - libXcomposite
+    - libXcursor
+    - libXdamage
+    - libXdmcp
+    - libXext
+    - libXfixes
+    - libXft
+    - libXi
+    - libXinerama
+    - libXmu
+    - libXpm
+    - libXrandr
+    - libXrender
+    - libXt
+    - libxcb
+    - libxkbcommon
+    - libxkbfile
+#    - libXxf86misc
+#    - libXfontcache
+    - libXtst
+#    - libfontenc
+#    - libxshmfence
+    - xcb-util
+    - xcb-util-cursor
+    - xcb-util-image
+    - xcb-util-keysyms
+    - xcb-util-renderutil
+    - xcb-util-wm
+    - xcb-util-xrm
+
+  x11@:
+    - xlibs@
+    - fontconfig
+    - freetype
+    - harfbuzz
+    - glib
+    - pixman
+    - libpciaccess
+    - libXfont2
+    - wayland
+    - libepoxy
+    - lgi
+    - awesome
+    - xfonts@
+    - fonts@
+    - xapps@
+
+  xapps@:
+    - xauth
+    - xdm
+    - xkbcomp
+    - xterm
+    - twm
+    - xset
+    - setxkbmap
+    - mkfontdir
+    - mkfontscale
+    - smproxy
+    - xsetroot
+    - rgb
+    - xrandr
+    - xmore
+    - xlogo
+    - xkill
+    - xlsfonts
+    - xclock
+    - xsm
+    - iceauth
+    - xrdb
+
+  fonts@:
+    - Droid
+    - RedHatFont
+    - cantarell-fonts
+    - adwaita-fonts
+    - LeagueMono
+    - Hack
+
+  xfonts@:
+    - encodings
+    - font-bh-ttf-1.0.3
+    - font-alias-1.0.3
+
+  xfonts-bitmap@:
+    - font-adobe-100dpi-1.0.3
+    - font-adobe-75dpi-1.0.3
+    - font-misc-misc-1.1.2
+
+  xserver@:
+    - xlibs@
+    - libdrm
+    - mtdev
+    - libepoxy
+    - libevdev
+    - libinput
+    - xorg-server
+    - xkeyboard-config
+    - xinit
+    - xf86-input-libinput
+    - xf86-video-vmware
+    - mesa
+
+  xrdp@:
+    - xrdp
+    - xorgxrdp
+    - xserver@
+    - xapps@
+  gnome@:
+    - cairo
+    - dconf
+    - gsettings-desktop-schemas
+    - hicolor-icon-theme
+    - adwaita-icon-theme
+    - shared-mime-info
+    - at-spi2-core
+    - glib
+    - gdk-pixbuf
+    - fribidi
+    - atk
+    - pango
+    - gtk-3
+    - librsvg
+    - gobject-introspection
+    - cantarell-fonts
+    - startup-notification
+    - libxdg-basedir
+    - lgi
+    - gnome-backgrounds
+    - libgee
+    - json-glib
+  
+  acl:
+    path: acl-2.3.2
+    desc: https://download-mirror.savannah.gnu.org/releases/acl/
+    deps:
+      - attr
+  adwaita-fonts:
+    path: adwaita-fonts-48.2
+  adwaita-icon-theme:
+    path: adwaita-icon-theme-41.0
+  alsa-lib:
+    path: alsa-lib-1.2.12
+  atk:
+    path: atk-2.38.0
+  at-spi2-atk:
+    path: at-spi2-atk-2.38.0
+  at-spi2-core:
+    path: at-spi2-core-2.53.1
+  attr:
+    desc: https://download-mirror.savannah.gnu.org/releases/attr/
+    path: attr-2.5.2
+  awesome:
+    path: awesome-4.3
+    deps:
+      - lgi
+      - gnome@
+  bash:
+    path: bash-5.2.37
+    deps:
+      - glibc
+      - ncurses
+  bc:
+    path: bc-1.08.1
+  bind:
+    path: bind-9.18.32
+    deps:
+      - libuv
+      - nghttp2
+      - libxml2
+      - liblmdb
+  binutils:
+    path: binutils-2.44
+    deps:
+      - flex
+  bird:
+    path: bird-2.0.9
+    deps:
+      - krb5
+  bison:
+    path: bison-3.8.2
+  brotli:
+    path: brotli-1.1.0
+  btrfs-progs:
+    path: btrfs-progs-6.0.2
+  bzip2:
+    path: bzip2.git
+  cairo:
+    path: cairo-1.18.2
+    deps:
+      - glibc
+      - pixman
+      - fontconfig
+      - freetype
+      - libpng
+      - libxcb
+      - libX11
+      - libXrender
+      - zlib
+  cantarell-fonts:
+    path: cantarell-fonts-0.303
+  cargo:
+    path: cargo-0.67.1
+  coreutils:
+    path: coreutils-9.6
+    deps:
+      - libcap
+  cryptsetup:
+    path: cryptsetup-2.7.0
+    deps:
+      - phc-winner-argon2
+  curl:
+    path: curl-8.12.1
+    deps:
+      - nghttp2
+      - libssh2
+      - brotli
+  dash:
+    path: dash-0.5.12
+  dav1d:
+    path: dav1d-1.5.1
+  diffutils:
+    path: diffutils-3.11
+  dmidecode:
+    path: dmidecode-3.5
+  dosfstools:
+    path: dosfstools-4.2
+  dbus: 
+    desc: https://dbus.freedesktop.org/releases/dbus/
+    path: dbus-1.16.2
+    deps:
+      - glibc
+      - expat
+  dconf:
+    path: dconf-0.40.0
+  e2fsprogs:
+    path: e2fsprogs-1.47.2
+  elfutils:
+    path: elfutils-0.192
+  emacs:
+    path: emacs-30.1
+    deps:
+      - glibc
+      - gtk-3
+      - alsa-lib
+      - librsvg
+      - libxml2
+      - gnutls
+      - lcms2
+      - jansson
+      - gmp
+      - fribidi
+      - sqlite
+      - at-spi2-core
+      - dav1d
+  encodings:
+   path: encodings-1.1.0
+  ethtool:
+    path: ethtool-6.4
+  expat:
+    desc: https://github.com/libexpat/libexpat/releases
+    path: expat-2.7.0
+  file:
+   path: file-5.46
+   desc: https://www.astron.com/pub/file/
+   deps:
+     - libseccomp
+     - xz
+     - zlib
+  fftw:
+    path: fftw-3.3.10
+  findutils: 
+    path: findutils-4.9.0
+  flex:
+    path: flex-2.6.4
+  fontconfig:
+    path: fontconfig-2.16.0
+    deps:
+      - freetype
+      - expat
+  fmt:
+    path: fmt-11.1.4
+  freerdp2:
+    path: freerdp-2.9.0
+  freetype:
+    path: freetype-2.13.3
+    deps:
+      - glibc
+      - zlib
+      - libpng
+      - harfbuzz
+      - brotli
+  fribidi:
+    path: fribidi-1.0.13
+  frr:
+    path: frr-10.2
+    deps:
+      - libyang
+      - libunwind
+      - json-c
+      - pcre2
+      - protobuf-c
+  gawk: 
+    path: gawk-5.3.1
+    deps:
+      - readline
+      - mpfr
+      - gmp
+  gdbm:
+    path: gdbm-1.25
+  gc:
+    path: gc-8.2.6
+    deps:
+      - libatomic_ops
+  gcc:
+    path: gcc-14.2.0
+    deps:
+      - isl
+      - binutils
+      - mpc
+  gdk-pixbuf:
+    path: gdk-pixbuf-2.42.12
+    deps:
+      - tiff
+      - libpng
+      - shared-mime-info
+  gettext:
+    path: gettext-0.24.0
+    deps:
+      - libxml2
+  glib:
+    path: glib-2.83.3
+    deps:
+      - pcre2
+  glibc:
+    path: glibc-2.41
+  gmp:
+    path: gmp-6.3.0
+  gnome-backgrounds:
+    path: gnome-backgrounds-41.0
+  gnome-terminal:
+    path: gnome-terminal-3.36.2
+  gnome-sudoku: 
+    path: gnome-sudoku-47.1.1
+    deps:
+      - qqwing
+      - gtk-4
+      - libadwaita
+      - libgee
+      - json-glib
+  gnutls:
+    path: gnutls-3.8.3
+    deps:
+      - libtasn1
+      - nettle
+      - gmp
+      - libffi
+      - libidn2
+      - libunistring
+  gobject-introspection: 
+    path: gobject-introspection-1.72.0
+    deps:
+      - libffi
+  graphene:
+    path: graphene-1.10.8
+  grep:
+    path: grep-3.11
+    deps:
+      - pcre2
+  gsettings-desktop-schemas:
+    path: gsettings-desktop-schemas-47.1
+  gtk-3:
+    path: gtk-3.24.48
+    deps:
+      - glibc
+      - glib
+      - pango
+      - atk
+      - gdk-pixbuf
+      - xlibs@
+      - wayland
+  gtk-4:
+    path: gtk-4.17.5
+    deps:
+      - glibc
+      - glib
+      - pango
+      - gdk-pixbuf
+      - xlibs@
+      - wayland
+      - graphene
+      - vulkansdk
+      - lzo
+  guile:
+    path: guile-3.0.10
+    deps:
+      - libunistring
+      - gmp
+      - libffi
+      - gc
+  gzip:
+    path: gzip-1.13
+  Hack:
+    path: Hack-3.003
+  harfbuzz:
+    path: harfbuzz-10.4.0
+  hicolor-icon-theme:
+    path: hicolor-icon-theme-0.18
+  htop: 
+    path:  htop-3.1.2
+    deps:
+      - libunwind
+  iana-etc:
+    path: iana-etc-20230907
+  iceauth:
+    path: iceauth-1.0.9
+  icu4c:
+    path: icu4c-64.2
+  ImageMagick:
+    path: ImageMagick-6.9.9-37
+  inetutils:
+    path: inetutils-2.6
+  iproute2:
+    path: iproute2-6.13.0
+    deps: 
+      - elfutils
+      - libmnl
+      - libbsd
+  iptables:
+    path: iptables-1.8.8
+    deps:
+      - libpcap
+  isl:
+    path: isl-0.27
+  jansson:
+    path: jansson-2.14
+  jpeg: 
+    path: jpeg-9f
+  json-c:
+    path: json-c-0.18
+  json-glib:
+    path: json-glib-1.10.6
+  jwm:
+    path: jwm-2.4.3
+    deps:
+      - librsvg
+  kbd:
+    desc: https://www.kernel.org/pub/linux/utils/kbd/
+    path: kbd-2.7.1
+  kmod:
+    path: kmod-33
+    deps:
+      - glibc
+      - xz
+      - zlib
+      - zstd
+  krb5:
+    path: krb5-1.17
+  LeagueMono:
+    path: LeagueMono
+  lcms2:
+    path: lcms2-2.15
+  libadwaita:
+    path: libadwaita-1.6.4
+    deps:
+      - curl
+      - yaml
+      - libxmlb
+  libatomic_ops:
+    path: libatomic_ops-7.8.2
+  libbsd:
+    path: libbsd-0.12.2
+    deps:
+      - libmd
+  libcap:
+    desc: https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/
+    path: libcap-2.73
+  libcap-ng:
+    path: libcap-ng-0.8.5
+  libcroco:
+    path: libcroco-0.6.13
+  libdecor:
+    path: libdecor-0.2.2
+  libdisplay-info:
+    path: libdisplay-info-0.1.1
+  libdrm:
+    path: libdrm-2.4.124
+  libeconf:
+    desc: https://github.com/openSUSE/libeconf/releases
+    path: libeconf-0.7.7
+  libepoxy:
+    path: libepoxy-1.5.10
+  libevdev:
+    path: libevdev-1.13.0
+  libffi:
+    path: libffi-3.4.6
+  libfontenc:
+    path: libfontenc-1.1.7
+  libFS: 
+    path: libFS-1.0.8
+  libICE:
+    path: libICE-1.1.1
+  libgcrypt:
+    path: libgcrypt-1.11.0
+    deps:
+      - glibc
+      - libgpg-error
+  libgee:
+    path: libgee-0.20.8
+    deps:
+      - json-glib
+  libglvnd:
+    path: libglvnd-1.7.0
+  libgpg-error:
+    path: libgpg-error-1.51
+  libidn2: 
+    path: libidn2-2.3.8
+  libinput:
+    path: libinput-1.23.0
+  libjxl:
+    path: libjxl-0.11.1
+  liblmdb:
+    path: liblmdb-0.9.33
+  libmd:
+    path: libmd-1.1.0
+  libmnl:
+    path: libmnl-1.0.5
+  libnl:
+    path: libnl-3.11.0
+  libpcap:
+    path: libpcap-1.10.5
+    deps:
+      - libnl
+      - dbus
+      - glibc
+      - libcap-ng
+  libpciaccess:
+    path: libpciaccess-0.17
+  libpng:
+    path: libpng-1.6.44
+  libpsl:
+    path: libpsl-0.21.2
+  libpthread-stubs:
+    path: libpthread-stubs-0.4
+  librsvg:
+    path: librsvg-2.59.2
+    deps:
+      - libxml2
+      - gdk-pixbuf
+      - pango
+  libseccomp:
+    desc: https://github.com/seccomp/libseccomp/releases
+    path: libseccomp-2.6.0
+  libSM:
+    path: libSM-1.2.6
+  libssh:
+    path: libssh-0.9.6
+  libssh2:
+    path: libssh2-1.11.1
+  libtasn1:
+    path: libtasn1-4.20.0
+  libtirpc:
+    path: libtirpc-1.3.6
+  libtool:
+    path: libtool-2.5.4
+  libunistring:
+    path: libunistring-1.3
+  libunwind:
+    path: libunwind-1.6.2
+  libuv:
+    path: libuv-1.49.2
+  libva:
+    path: libva-2.20.0
+  libwebp:
+    path: libwebp-1.4.0
+  libX11:
+    path: libX11-1.8.12
+    deps:
+     - libXau
+     - libxcb
+     - libXdmcp
+  libXau:
+    path: libXau-1.0.11
+  libXaw:
+    path: libXaw-1.0.14
+    deps:
+      - libX11
+      - libXt
+  libXcomposite:
+    path: libXcomposite-0.4.6
+  libxcrypt:
+    path: libxcrypt-4.4.38
+  libXcursor:
+    path: libXcursor-1.2.2
+  libXdamage:
+    path: libXdamage-1.1.6
+  libXdmcp:
+    path: libXdmcp-1.1.5
+  libXext:
+    path: libXext-1.3.5
+  libXfixes:
+    path: libXfixes-6.0.1
+  libXfont2:
+    path: libXfont2-2.0.6
+    deps:
+      - libfontenc
+      - pcre2
+      - harfbuzz
+      - freetype
+      - glib
+      - bzip2
+      - libpng
+      - brotli
+      - libmd
+      - zlib
+  libXfontcache:
+    path: libXfontcache-1.0.5
+  libXft:
+    path: libXft-2.3.7
+    deps:
+     - harfbuzz
+     - freetype
+     - libXrender
+     - libX11
+     - fontconfig
+  libxkbcommon:
+    path: libxkbcommon-1.8.0
+  libXi:
+    path: libXi-1.8
+  libXinerama:
+    path: libXinerama-1.1.5
+  libXmu:
+    path: libXmu-1.1.4
+  libXpm:
+    path: libXpm-3.5.16
+  libXrandr:
+    path: libXrandr-1.5.3
+  libXrender:
+    path: libXrender-0.9.11
+    deps:
+      - xorgproto
+  libXt:
+    path: libXt-1.2.1
+    deps:
+      - libX11
+      - libxcb
+      - libICE
+      - libSM
+      - libXau
+  libxshmfence:
+    path: libxshmfence-1.3.2
+  libXtst:
+    path: libXtst-1.2.3
+  libXxf86misc:
+    path: libXxf86misc-1.0.4
+  libxdg-basedir:
+    path: libxdg-basedir-1.2.0
+  libxcb:
+    path: libxcb-1.17.0
+    deps:
+      - libXau
+      - libXdmcp
+  libxcvt:
+    path: libxcvt-0.1.2
+  libxkbfile:
+    path: libxkbfile-1.1.0
+  libxml2:
+    path: libxml2-2.13.3
+  libxmlb:
+    path: libxmlb-0.3.21
+  libyang:
+    path: libyang-2.1.148
+  linux:
+    path: linux-6.13
+  Linux-PAM:
+    desc: https://github.com/linux-pam/linux-pam
+    path: Linux-PAM-1.7.0
+    deps:
+      - glibc
+      - libtirpc
+  lgi: 
+    path: lgi.git
+    deps:
+      - libffi
+      - gobject-introspection
+  lz4:
+    path: lz4-1.10.0
+  lzo:
+    path: lzo-2.10
+  LVM2:
+    path: LVM2-2.03.14
+  m4:
+    path: m4-1.4.19
+  make:
+    path: make-4.4
+    deps:
+      - guile
+  mesa:
+    path: mesa-24.2.7
+    deps:
+      - libepoxy
+      - libdrm
+      - libglvnd
+  mkfontdir:
+    path: mkfontdir-1.0.7
+  mkfontscale: 
+    path: mkfontscale-1.2.3
+  mpc:
+    path: mpc-1.3.1
+    deps:
+      - mpfr
+  mpfr:
+    path: mpfr-4.2.2
+    deps:
+      - gmp
+  mtdev:
+    path: mtdev-1.1.6
+  ncurses:
+    path: ncurses-6.5
+  nettle:
+    path: nettle-3.10.1
+  nghttp2:
+    path: nghttp2-1.64.0
+  openldap:
+    path: openldap-2.5.13
+  openssh:
+    path: openssh-9.9p2
+  openssl:
+    desc: https://openssl-library.org/source/
+    path: openssl-3.4.1
+  p11-kit:
+    path: p11-kit-0.25.5
+  pango:
+    path: pango-1.56.1
+    deps:
+      - glib
+      - fribidi
+      - harfbuzz
+      - freetype
+      - fontconfig
+      - cairo
+      - libXft
+      - libX11
+  pciutils:
+    path:  pciutils-3.13.0
+  pcre:
+    path: pcre-8.45
+  pcre2:
+    path: pcre2-10.45
+  perl: 
+    path: perl-5.40.1
+  phc-winner-argon2: 
+    path: phc-winner-argon2-20190702
+  pip:
+    path: pip-22.3.1
+  pixman:
+    path: pixman-0.43.4
+  pkg-config:
+    path: pkg-config-0.29.2
+  procps:
+    path: procps-4.0.5
+  protobul-c:
+    path: protobuf-c-1.4.1
+  Python:
+    path: Python-3.13.2
+  qqwing:
+    path: qqwing-1.3.4
+  raqm:
+    path: raqm-0.10.1
+  readline: 
+    path: readline-8.2.13
+    deps:
+      - ncurses
+  RedHatFont:
+    path: RedHatFont-4.0.3
+  rgb:
+    path: rgb-1.0.6
+  rustc:
+    desc: https://static.rust-lang.org/dist/rustc-1.72.0-src.tar.gz
+    path: rustc-1.66.0
+  seatd:
+    path: seatd-0.8.0
+  sed:
+    path: sed-4.9
+  setuptools:
+    path: setuptools-65.6.3
+  setxkbmap:
+    path: setxkbmap-1.3.3
+  shadow:
+    path: shadow-4.17.2
+  shared-mime-info:
+    path: shared-mime-info-2.2
+  smproxy:
+    path: smproxy-1.0.6
+  sqlite:
+    path: sqlite-autoconf-3420000
+  startup-notification:
+    path: startup-notification-0.12
+  strace:
+    path: strace-5.12
+  sudo:
+    desc: https://www.sudo.ws/releases/stable/
+    path: sudo-1.9.16p2
+  systemd:
+    path: systemd-257.4
+    deps:
+      - glibc
+      - libxcrypt
+      - util-linux
+      - Linux-PAM
+      - kmod
+      - json-c
+      - acl
+      - attr
+      - libcap
+      - libgcrypt
+      - p11-kit
+      - libffi
+      - zlib
+      - xz
+      - lz4
+      - zstd
+      - openssl
+      - libidn2
+      - dbus
+      - cryptsetup
+      - kbd
+      - LVM2
+  sysvinit:
+    path: sysvinit-2.90
+  tar:
+    path: tar-1.34
+    deps:
+      - acl
+      - attr
+  tcpdump:
+    path: tcpdump-4.99.5
+    deps:
+      - libpcap
+  texinfo:
+    path: texinfo-7.2
+  tiff:
+    path: tiff-4.7.0
+    deps:
+      - glibc
+      - jpeg
+      - libwebp
+      - xz
+      - zstd
+  twm:
+    path: twm-1.0.12
+    deps:
+      - libX11
+      - libXmu
+      - libXt
+      - libICE
+      - libSM
+      - libXrandr
+      - xfonts-bitmap@
+  tzdb:
+    path: tzdb-2024a
+  util-linux: 
+    desc: https://www.kernel.org/pub/linux/utils/util-linux/
+    path: util-linux-2.40.4
+    deps:
+      - glibc
+      - file
+#      - libseccomp
+      - libeconf
+      - bzip2
+  vim:
+    path: vim-9.1
+  vte:
+    path: vte-0.60.2
+  vtwm:
+    path: vtwm-5.5.0
+  vulkansdk:
+    path: vulkansdk-1.4.304.1
+  wayland:
+    path: wayland-1.23.1
+    deps:
+      - libepoxy
+  weston:
+    path: weston-14.0.1
+    deps:
+      - libinput
+      - libevdev
+      - libdrm
+      - mtdev
+      - libxkbcommon
+      - xkeyboard-config
+      - libdisplay-info
+      - mesa
+      - libva
+      - seatd
+      - freerdp3
+  wget: 
+    path: wget-1.25.0
+  which:
+    path: which-2.21
+  xauth:
+    path: xauth-1.1.4
+    deps:
+      - xlibs@
+  xcb-util:
+    path: xcb-util-0.4.1
+  xcb-util-cursor:
+    path: xcb-util-cursor-0.1.2
+  xcb-util-image:
+    path: xcb-util-image-0.4.0
+  xcb-util-keysyms:
+    path: xcb-util-keysyms-0.4.0
+  xcb-util-renderutil:
+    path: xcb-util-renderutil-0.3.9
+  xcb-util-wm:
+    path: xcb-util-wm-0.4.1
+  xcb-util-xrm:
+    path: xcb-util-xrm-1.2
+  xclock:
+    path: xclock-1.1.1
+  xcursor-themes:
+    path: xcursor-themes-1.0.6
+  xdm:
+    path: xdm-1.1.17
+  xf86-input-libinput:
+    path: xf86-input-libinput-1.2.1
+  xf86-video-vmware:
+    path: xf86-video-vmware-13.3.0
+  xfontscale:
+    path: xfontscale-1.2.0
+  xfsprogs:
+    path: xfsprogs-6.12.0
+  xinit:
+    path: xinit-1.4.4
+  xkbcomp:
+    path: xkbcomp-1.4.5
+    deps:
+      - libX11
+      - libxkbfile
+  xkeyboard-config:
+    path: xkeyboard-config-2.44
+  xkill:
+    path: xkill-1.0.5
+  xlogo:
+    path: xlogo-1.0.5
+  xlsfonts:
+    path: xlsfonts-1.0.7
+  xmore:
+    path: xmore-1.0.3
+  xorgproto:
+    path: xorgproto-2022.1
+  xorgxrdp:
+    path: xorgxrdp-0.10.3
+    deps:
+      - xorg-server
+  xorg-server:
+    path: xorg-server-21.1.5
+    deps:
+      - libxcvt
+      - libXfont2
+      - libxshmfence
+      - libpciaccess
+      - libdrm
+      - libXau
+      - libXdmcp
+      - libfontenc
+      - pixman
+      - libunwind
+      - gcc
+      - xkeyboard-config
+      - xkbcomp
+      - libepoxy
+  xrandr:
+    path: xrandr-1.5.1
+  xrdb:
+    path: xrdb-1.2.0
+  xrdp:
+    path: xrdp-0.10.2
+    deps:
+      - xorgxrdp
+      - bzip2
+      - openssl
+      - xinit
+      - xdm
+      - twm
+      - xterm
+      - xsm
+      - xauth
+  xset:
+    path: xset-1.2.4
+    deps:
+     - libX11
+     - libXmu
+     - libXext
+     - libXxf86misc
+     - libXfontcache
+  xsetroot:
+    path: xsetroot-1.1.3
+  xsm:
+    path: xsm-1.0.5
+    deps:
+     - iceauth
+     - smproxy
+  xterm:
+    path: xterm-349
+    deps:
+      - libXext
+      - libXft
+      - libXaw
+      - libXmu
+      - libXinerama
+      - libXpm
+      - libICE
+      - libSM
+      - xfonts@
+      - fonts@
+  xz:
+    path: xz-5.6.4
+  yaml:
+     path: yaml-0.2.5
+  zlib:
+    path: zlib-1.3.1
+  zstd:
+    path: zstd-1.5.7
