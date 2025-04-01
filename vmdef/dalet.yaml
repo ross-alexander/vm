@@ -1,0 +1,89 @@
+---
+vm:
+  - name: dalet
+    fqdn: dalet.prax.hepazulian.net
+    image:
+      directory: /srv/kvm/dstore/dalet
+      format: qcow2
+      size: 15G
+    part:
+      root:
+        fstype: ext4
+    kernel: /locker/build/linux/linux-6.13-x64/arch/x86/boot/bzImage
+    model: x86_64
+    append: console=ttyS0 loglevel=3
+    nic:
+      - bridge: intel
+        mac: 00:16:3E:00:06:01
+      - bridge: intel
+        mac: 00:16:3E:00:06:02
+        vlan: 201
+      - bridge: intel
+        mac: 00:16:3E:00:06:03
+        vlan: 203
+    pkg:
+      - base@
+    ssh:
+      ecdsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAaAAAABNlY2RzYS
+          1zaGEyLW5pc3RwMjU2AAAACG5pc3RwMjU2AAAAQQTwuh57is11pfkvuZiAsccbM91vqF55
+          LRAcMk/X0Ce3ZQR9shPqTsYO4X0cIBfY8hgNyrt/89dRPllXlvGOODIqAAAAuOKGn03ihp
+          9NAAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPC6HnuKzXWl+S+5
+          mICxxxsz3W+oXnktEBwyT9fQJ7dlBH2yE+pOxg7hfRwgF9jyGA3Ku3/z11E+WVeW8Y44Mi
+          oAAAAgcmTBo/xQle7X6Q93JYVEJAUbb0UABZ9a77tVjCRuwzAAAAAZZGFsZXQucHJheC5o
+          ZXBhenVsaWFuLm5ldAECAwQFBgc=
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPC6HnuKzXWl+S+5mICxxxsz3W+oXnktEBwyT9fQJ7dlBH2yE+pOxg7hfRwgF9jyGA3Ku3/z11E+WVeW8Y44Mio= dalet.prax.hepazulian.net\n"
+      ed25519:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACBtNjJRYhljoopO75L092eC3Q00clJSpTcXur0gVp+ViQAAAKAC8XZOAvF2
+          TgAAAAtzc2gtZWQyNTUxOQAAACBtNjJRYhljoopO75L092eC3Q00clJSpTcXur0gVp+ViQ
+          AAAECKSBqeFvHEx8XFO4qb45TDP56xdGr6AVlSvn5CtorVdG02MlFiGWOiik7vkvT3Z4Ld
+          DTRyUlKlNxe6vSBWn5WJAAAAGWRhbGV0LnByYXguaGVwYXp1bGlhbi5uZXQBAgME
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG02MlFiGWOiik7vkvT3Z4LdDTRyUlKlNxe6vSBWn5WJ dalet.prax.hepazulian.net\n"
+      rsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          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
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNj47PqfGwHCPmr9cqQ7d6Ukx8xalWyLNaPZQxfaxJVxfPYfAxV0+LoESNgByH4hs/cJztg7EtZlJb1TpkO7UQEHQQm9Dhxa8sh+t1BIBTMq+nMVnab56iKCut+6h+DP6PCmuhdZNnsvm2R3SyRMDWJzSQ6MX/QAosOSjiEfWx5ebphQMHTllgyZLayfEEtxkdyS0Z2kCnRGMEvYDsnLygWHrmvtRjfsTi4nPyzIxkQDYjgPMeyvuwA9t/RY0chKLY7utbn17Iq1hniyH7rl7dsXjDrAInw/5WzQ2UnLYjU0wwChOt8kP7bus8LOEeHkJfTZ9cvJw+7TD/vMjM77J1cOM1s1kTWnLpvaNGfFix7tIZVtyW9DnSAGYqGjTo8KiMe3MbQoYwC4MIF1gUjh+XIs8bHSYwJhdUETah/utI48CibbPm5VgBlLWXLcWC8VB31p7K6WiCe0qgCOcMEJvsW+Vv6hfviuViJKoC4JbuTTav3dHD+XTKYBz13kzWpSs= dalet.prax.hepazulian.net\n"

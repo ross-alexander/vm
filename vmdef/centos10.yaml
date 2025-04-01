@@ -1,0 +1,16 @@
+---
+vm:
+  name: centos10
+  fqdn: centos10.prax.hepazulian.net
+  model: x86_64
+  cpu: host
+  mem: 4G
+  smp: 2
+  image:
+    directory: /srv/kvm/dstore/centos10
+    file: centos10.img
+    format: raw
+  nic:
+    - mac: 00:16:3e:00:15:01
+      bridge: intel
+---

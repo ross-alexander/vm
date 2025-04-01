@@ -1,0 +1,146 @@
+---
+vm:
+  - name: omega
+    fqdn: omega.prax.hepazulian.net
+    image:
+      format: raw
+      fstype: xfs
+      size: 10G
+      directory: /xfs/omega
+    kernel: /boot/vmlinuz-5.19.4
+    append: loglevel=3 console=ttyS0 init=/sbin/init
+    mem: 1G
+    smp: 2
+    nic:
+      - bridge: intel
+        mac: 00:16:3e:00:08:01
+      - bridge: intel
+        mac: 00:16:3e:00:08:02
+        vlans:
+          - 100
+        vrf: prod
+    pkg:
+      - skel-dirs
+      - glibc
+      - dash
+      - coreutils
+      - util-linux
+      - bash
+      - systemd
+      - xfsprogs
+      - e2fsprogs
+      - iproute2
+      - linux
+      - openssh
+      - inetutils
+      - grep
+      - gawk
+      - sed
+      - tar
+      - perl
+      - Python
+      - emacs
+      - binutils
+      - gcc
+      - xauth
+      - xterm
+      - gsettings-desktop-schemas
+      - hicolor-icon-theme
+      - adwaita-icon-theme
+      - shared-mime-info
+      - gnome-backgrounds
+      - gdbm
+      - xrdp@
+      - fmt
+      - gnome-sudoku
+      - jwm
+      - procps
+      - skel-files
+    ssh:
+      dsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABsQAAAAdzc2gtZH
+          NzAAAAgQCWul1VGKbFpzsj9zdhI7VPHB+m8CJSOOy8sO7XfQzxB092XfxAMea9uaU5ixQ4
+          GxSoJDOCU0hyJqU+1mG3+H0GO/AA+0kZ1iEZosjLX9sJk3+qt2mo3hoyJ5OiHiFlNyPX+2
+          wtEKI1VJtp13tEPRaKoKdaWWYHv95S++DU6oWrqwAAABUAiyyadER1byCpc+qLgBA6oOhq
+          t3sAAACAaTo/BeczBfWJn6IPfsgkPtZBMQUAe1haYFrx0rucuH/BHCjTAOrhnvi0ZMetzr
+          LMngQRx1G0lI8J/7ikU4T7LuBWH1flgVxwrKRvPE8cayW9iG5eFd+Z/iAOBFgVWMiWL2sz
+          daY6YgEVoC9Ke84MlLAUt2L4MKQqBS5f6oiZpnEAAACABO3XS8JE4GyzHDtwhA9KYy4cd6
+          biceifbJmnHQpTfvQ+LWkvw491ARc9GwMh0/hAaL7fqFP5tmuF8sMXhD315a/2N6obzdv0
+          hFO0fOpDXa9vp0W0gwwqXuWKIM7E8JPdXPMCHdL5hsHi/NnxzVGMjCqcjgO8sN7usBu1J4
+          LAIyoAAAHwCah/CwmofwsAAAAHc3NoLWRzcwAAAIEAlrpdVRimxac7I/c3YSO1TxwfpvAi
+          UjjsvLDu130M8QdPdl38QDHmvbmlOYsUOBsUqCQzglNIcialPtZht/h9BjvwAPtJGdYhGa
+          LIy1/bCZN/qrdpqN4aMieToh4hZTcj1/tsLRCiNVSbadd7RD0WiqCnWllmB7/eUvvg1OqF
+          q6sAAAAVAIssmnREdW8gqXPqi4AQOqDoard7AAAAgGk6PwXnMwX1iZ+iD37IJD7WQTEFAH
+          tYWmBa8dK7nLh/wRwo0wDq4Z74tGTHrc6yzJ4EEcdRtJSPCf+4pFOE+y7gVh9X5YFccKyk
+          bzxPHGslvYhuXhXfmf4gDgRYFVjIli9rM3WmOmIBFaAvSnvODJSwFLdi+DCkKgUuX+qIma
+          ZxAAAAgATt10vCROBssxw7cIQPSmMuHHem4nHon2yZpx0KU370Pi1pL8OPdQEXPRsDIdP4
+          QGi+36hT+bZrhfLDF4Q99eWv9jeqG83b9IRTtHzqQ12vb6dFtIMMKl7liiDOxPCT3VzzAh
+          3S+YbB4vzZ8c1RjIwqnI4DvLDe7rAbtSeCwCMqAAAAFCrrXgQJJVsUyVWPKqpRqPHX/0ie
+          AAAAGW9tZWdhLnByYXguaGVwYXp1bGlhbi5uZXQBAg==
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-dss AAAAB3NzaC1kc3MAAACBAJa6XVUYpsWnOyP3N2EjtU8cH6bwIlI47Lyw7td9DPEHT3Zd/EAx5r25pTmLFDgbFKgkM4JTSHImpT7WYbf4fQY78AD7SRnWIRmiyMtf2wmTf6q3aajeGjInk6IeIWU3I9f7bC0QojVUm2nXe0Q9Foqgp1pZZge/3lL74NTqhaurAAAAFQCLLJp0RHVvIKlz6ouAEDqg6Gq3ewAAAIBpOj8F5zMF9Ymfog9+yCQ+1kExBQB7WFpgWvHSu5y4f8EcKNMA6uGe+LRkx63OssyeBBHHUbSUjwn/uKRThPsu4FYfV+WBXHCspG88TxxrJb2Ibl4V35n+IA4EWBVYyJYvazN1pjpiARWgL0p7zgyUsBS3YvgwpCoFLl/qiJmmcQAAAIAE7ddLwkTgbLMcO3CED0pjLhx3puJx6J9smacdClN+9D4taS/Dj3UBFz0bAyHT+EBovt+oU/m2a4XywxeEPfXlr/Y3qhvN2/SEU7R86kNdr2+nRbSDDCpe5YogzsTwk91c8wId0vmGweL82fHNUYyMKpyOA7yw3u6wG7UngsAjKg== omega.prax.hepazulian.net\n"
+      ecdsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAaAAAABNlY2RzYS
+          1zaGEyLW5pc3RwMjU2AAAACG5pc3RwMjU2AAAAQQQ5OS0bzwAH5NBZ9/DeOvA0dSs/Epvy
+          NCcx/wFkQPqay0UxWEyRyEJNcFWacGCD9KW8BvjPnszo56Fx3vB8zn+sAAAAuPBW1ObwVt
+          TmAAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDk5LRvPAAfk0Fn3
+          8N468DR1Kz8Sm/I0JzH/AWRA+prLRTFYTJHIQk1wVZpwYIP0pbwG+M+ezOjnoXHe8HzOf6
+          wAAAAgIOY4WCKw0rzK8ga1y80SjMaUdbT9qmP3VeJQEru4pocAAAAZb21lZ2EucHJheC5o
+          ZXBhenVsaWFuLm5ldAECAwQFBgc=
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDk5LRvPAAfk0Fn38N468DR1Kz8Sm/I0JzH/AWRA+prLRTFYTJHIQk1wVZpwYIP0pbwG+M+ezOjnoXHe8HzOf6w= omega.prax.hepazulian.net\n"
+      ed25519:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACBiKEq4eEyPxln7TewpP3JKGcywbhLMlkvg7H/7AtBIqQAAAKDcu/tw3Lv7
+          cAAAAAtzc2gtZWQyNTUxOQAAACBiKEq4eEyPxln7TewpP3JKGcywbhLMlkvg7H/7AtBIqQ
+          AAAEAMExXNLZJzaCkoPgVwWAoH7YeEuvv2ahX+sjNmIGxdNWIoSrh4TI/GWftN7Ck/ckoZ
+          zLBuEsyWS+Dsf/sC0EipAAAAGW9tZWdhLnByYXguaGVwYXp1bGlhbi5uZXQBAgME
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIoSrh4TI/GWftN7Ck/ckoZzLBuEsyWS+Dsf/sC0Eip omega.prax.hepazulian.net\n"
+      rsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          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
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCUBs9NTvr8I6TzI6USX7HYw7Ns4xnHaE7C/D00uIR8r9fZxvOv2oknMLjL6cwuyXyqtDNAguAL9v0ztir9bkchwK+xRlkeb/Yx29QhZKFv95E1+zcIW9sG9gw6/zLfXNI7+sERfxcVxyJPYLl87uiSY1g4Rg1k+6uQsCctftxU3MMeo7FxLsicj9Iwm4PECUXkzkvO2oFAgwHqU6aXMrRckDgcquqf8kFpeCh3xNsu31rC4CEGZP4iJqZnNbszDTHzemegtViRThoY4VYBwOiYHD6awomK9ZHGRjJf6ZmvcRJhidjdDf9mFz7FlOTcGN8yeFna3rmpsKT2dREGV+zfERHDPXmYgQu5rPnBhi0vRKX+188DnXUrvduRHxzcHg9i304aJubk1QBvtP56CCVdZR0FHwer9iDIv0ed/Qc5O0MKaa9WAPSK2OpiKd5S2bEGfLnA1mFYPUqPbTpwQmYcrPKEiliNHEfhpv+x6Loiq33pNeQgeaGUqQC0w3HzVuc= omega.prax.hepazulian.net\n"

@@ -1,0 +1,99 @@
+---
+vm:
+  - append: loglevel=3 console=ttyS0
+    fqdn: gimel.prax.hepazulian.net
+    image:
+      directory: /srv/kvm/dstore/gimel
+      format: qcow2
+      size: 15G
+    part:
+      root:
+        fstype: ext4
+    kernel: /locker/build/linux/linux-6.13-x64/arch/x86/boot/bzImage
+    model: x86_64
+    name: gimel
+    vrf:
+      - name: vxlan
+        table: 200
+    nic:
+      - bridge: intel
+        dhcp4: true
+        mac: 00:16:3e:00:05:01
+      - bridge: intel
+        mac: 00:16:3e:00:05:02
+        vlan: 201
+        vrf: vxlan
+      - bridge: intel
+        mac: 00:16:3e:00:05:03
+        vlan: 202
+        vrf: vxlan
+      - bridge: intel
+        mac: 00:16:3e:00:05:04
+        vlan: 204
+    pkg:
+      - base@
+      - frr
+    ssh:
+      ecdsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAaAAAABNlY2RzYS
+          1zaGEyLW5pc3RwMjU2AAAACG5pc3RwMjU2AAAAQQQFYkxGPHKW60aOGkSzfLXrCQ0/FwFx
+          0wF4qW/bCsgnhr8WZ+E7Z9y/EOzh8Ua5a9i3JOQ6ZrTxsxEX8nBrH9QHAAAAuMa8YM3GvG
+          DNAAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAViTEY8cpbrRo4a
+          RLN8tesJDT8XAXHTAXipb9sKyCeGvxZn4Ttn3L8Q7OHxRrlr2Lck5DpmtPGzERfycGsf1A
+          cAAAAhAPsVCd/92QSMrpOvyEq/V8wckwVr7VpvdzzFU2X4ynIRAAAAGWdpbWVsLnByYXgu
+          aGVwYXp1bGlhbi5uZXQBAgMEBQY=
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAViTEY8cpbrRo4aRLN8tesJDT8XAXHTAXipb9sKyCeGvxZn4Ttn3L8Q7OHxRrlr2Lck5DpmtPGzERfycGsf1Ac= gimel.prax.hepazulian.net\n"
+      ed25519:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACDO/ZAcaHzb4oNruRUBKWw0Q2dOZx1pgfqTMCPS1RHYKgAAAKCKcX3CinF9
+          wgAAAAtzc2gtZWQyNTUxOQAAACDO/ZAcaHzb4oNruRUBKWw0Q2dOZx1pgfqTMCPS1RHYKg
+          AAAEAkXqSVbj1ThkU3609lVl+fq7Fu36wIWYxKqgSq3zO2WM79kBxofNvig2u5FQEpbDRD
+          Z05nHWmB+pMwI9LVEdgqAAAAGWdpbWVsLnByYXguaGVwYXp1bGlhbi5uZXQBAgME
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM79kBxofNvig2u5FQEpbDRDZ05nHWmB+pMwI9LVEdgq gimel.prax.hepazulian.net\n"
+      rsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          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
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6VLhpwP6Jao6lmUYwG3x9SZITJM/vmGQB38GF2rYbdy7WLGei/v5imkWFIHntiDJ95gfup1UUeC01nrcq9R9hLQvLJu5Y5Fddj7LX/mtTebGwIKlao9M+TKJCsBDnWpUoMQDmvKXxoA541PIbapcDXSHZEjRHqfvDfuffoOa7Wy/C5avkkf+nvJj4Rjad4wcZwvN9H6dQLm4v4OBSkhczg92+9wNFk0hdUNq8p6LwMNYKadblbOGr9UNN3qXbpMjo0MHPdTZBAb9lom9Q1xTV6lOc0ZgFrqrFEhdwsKwnasjQ24EPpza3BPVZ/DkZ0cSPAGGLaMPmKWtrUY/ikjKgc0yF6AsbJ+KnjecOGSIKaBL8pFnvadv64tpZ9V0C2OWted26syOvPsG6J5bO09u369DzeerW22LBn2taEP947nc55R8EtdXYR1TXLTbpw6kjcHIccvwcikW9TSqlYvGQTUWdrH2NlG+VY2mmIz7UsN3vNYx59IumzicBSOPGjMU= gimel.prax.hepazulian.net\n"

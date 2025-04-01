@@ -1,0 +1,20 @@
+vm:
+  - name: uefi
+    fqdn: uefi.prax.hepazulian.net
+    model: x86_64
+    firmware: uefi
+    kernel: /boot/vmlinuz-6.8.1
+    image:
+      format: raw
+      size: 10G
+      directory: /srv/kvm/dstore/uefi
+      partition:
+        efisys:
+          size: 100
+        boot:
+          size: 1024
+        root:
+          size: 9216
+    nic:
+      - bridge: intel
+        mac: 00:16:3e:00:13:01

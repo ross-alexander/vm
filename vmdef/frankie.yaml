@@ -1,0 +1,58 @@
+---
+vm:
+  append: root=/dev/sda loglevel=7 init=/sbin/init
+  bios: /locker/git/opensbi/build/platform/generic/firmware/fw_jump.bin
+  cpu: 'rv64,zba=true,zbb=true,zbc=true,v=true,vlen=256,elen=64,vext_spec=v1.0'
+  fqdn: frankie.prax.hepazulian.net
+  image:
+    directory: /srv/kvm/dstore/frankie
+    format: qcow2
+    size: 10G
+  kernel: /locker/build/linux/linux-6.13.1-rv64/arch/riscv/boot/Image
+  mach: virt
+  mem: 8G
+  model: riscv64
+  mounts:
+    - name: locker9p
+      path: /locker
+      type: 9p
+  name: frankie
+  nic:
+    - bridge: intel
+      mac: 00:16:3e:02:02:01
+  pkg:
+    - skel-dirs
+    - glibc
+    - dash
+    - ncurses
+    - bash
+    - coreutils
+    - util-linux
+    - libxcrypt
+    - libtirpc
+    - Linux-PAM
+    - openssl
+    - zstd
+    - libgcrypt
+    - dbus
+    - systemd-257.4
+    - iproute2
+    - inetutils
+    - openssh
+    - shadow-4.17.3
+    - libffi
+    - Python-3.13.2
+    - tzdb-2025b
+    - skel-files
+  smp: 8
+  ssh:
+    ed25519:
+      key: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+        QyNTUxOQAAACCeJJ0a0OYbSt1dxcU0ozoFzxy1r38HNLBqlA/immBX+gAAAKBxH+YtcR/m
+        LQAAAAtzc2gtZWQyNTUxOQAAACCeJJ0a0OYbSt1dxcU0ozoFzxy1r38HNLBqlA/immBX+g
+        AAAEDaET5sxX4meabM4Dp7USS5sf/yot4R8wDtymPehMr59Z4knRrQ5htK3V3FxTSjOgXP
+        HLWvfwc0sGqUD+KaYFf6AAAAG2ZyYW5raWUucHJheC5oZXBhenVsaWFuLm5ldAEC
+        -----END OPENSSH PRIVATE KEY-----
+      pub: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ4knRrQ5htK3V3FxTSjOgXPHLWvfwc0sGqUD+KaYFf6 frankie.prax.hepazulian.net\n"

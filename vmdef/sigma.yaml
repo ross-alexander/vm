@@ -1,0 +1,194 @@
+---
+vm:
+  - fqdn: sigma.prax.hepazulian.net
+    name: sigma
+    kernel:  /locker/build/linux/linux-6.13.7-x64/arch/x86/boot/bzImage
+    mem: 4G
+    smp: 8
+    append: loglevel=3 console=ttyS0
+    model: x86_64
+    image:
+      directory: /srv/kvm/dstore/sigma
+      format: raw
+      size: 20G
+      fstype: ext4
+#      partition:
+#        root:
+#          fstype: ext4
+#          label: /
+#    disks:
+#      - name: build.raw
+#        format: raw
+    mounts:
+      - name: locker9p
+        type: 9p
+        path: /locker
+      - name: build9p
+        type: 9p
+        path: /locker/build
+    nic:
+      - bridge: intel
+        mac: 00:16:3e:00:10:01
+        dhcp4: true
+      - bridge: intel
+        vlan: 100
+        mac: 00:16:3e:00:10:02
+        vrf: prod
+    pkg:
+      - skel-dirs
+      - glibc
+      - attr
+      - acl
+      - libcap
+      - libxcrypt
+      - util-linux
+      - zlib
+      - bzip2
+      - libeconf
+      - openssl
+      - expat
+      - dbus
+      - kbd
+      - bash
+      - readline
+      - coreutils
+      - systemd
+      - openssh
+      - zstd
+      - xz
+      - lz4
+      - cryptsetup
+      - LVM2
+      - json-c
+      - kmod
+      - libgpg-error
+      - libgcrypt
+      - Linux-PAM
+      - gnutls
+      - p11-kit
+      - libffi
+      - linux-6.14
+      - diffutils
+      - findutils
+      - iproute2
+      - inetutils
+      - gcc
+      - Python
+      # - libnl
+      # - pip
+      # - setuptools
+      - make
+      - gzip
+      - tar
+      - grep
+      - sed
+      - gawk
+      - m4
+      # - bison
+      # - gettext
+      # - texinfo
+      # - xfsprogs
+      - e2fsprogs
+      - pciutils
+      - procps
+      - perl
+      - shadow
+      - bind
+      - vim
+      - sudo
+      - tzdb
+      - emacs
+      - xrdp@
+      - which
+      - fmt
+      - vtwm
+      - bc
+      - skel-files
+    ssh:
+      dsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABsQAAAAdzc2gtZH
+          NzAAAAgQCAxLEza87tLrQ9OStEnEJrgtQZpyXwbt6keRn8p8QwdnrZw4tjYwKS/YBgk367
+          HesL0KZjzIJxZaPo+642EcGN8rBQI63OCw9GKkK7g/YFNuJmd0kbLP73X7vOkHrgMWd6qX
+          d8QU1q/g95y85eJC9uT0M1c2Mjra7birUDKSqydwAAABUAvY4OyxnPvyE9WiOjf9t1cSbF
+          zi8AAACAd4j0IE6otAnisJ4bAEM/ckHaWIcGrkTz0+RiFbj80QwpDokbV4oB687UY+2oPb
+          YteMap3su++9k1Q2CP7tEbDa4+KInQ6kqU/KaoI5eApd0wH8NhkAH16zdA7sndyUEB21oa
+          3Ejs692vowLVAPxcsO/Y+UWIDYVf7GOzaQgVLK4AAACAFL72IO3clQCbmHmn2ntgjzKEMe
+          weczMJIrGGSZl1KTrnmR4ZQgKMyNfhe+ldD3tS0wpV5wuKKwlfxB28G5D8tqUS9lS1OeNU
+          Z5Airy0sS/+TzcgHUfe4KfkgTIiXs+Jhad2lQgg0FHvPsN1q4F6ULIKw9lRLrTGpjUZnEj
+          RSC2wAAAHwGIj4xBiI+MQAAAAHc3NoLWRzcwAAAIEAgMSxM2vO7S60PTkrRJxCa4LUGacl
+          8G7epHkZ/KfEMHZ62cOLY2MCkv2AYJN+ux3rC9CmY8yCcWWj6PuuNhHBjfKwUCOtzgsPRi
+          pCu4P2BTbiZndJGyz+91+7zpB64DFneql3fEFNav4PecvOXiQvbk9DNXNjI62u24q1Aykq
+          sncAAAAVAL2ODssZz78hPVojo3/bdXEmxc4vAAAAgHeI9CBOqLQJ4rCeGwBDP3JB2liHBq
+          5E89PkYhW4/NEMKQ6JG1eKAevO1GPtqD22LXjGqd7LvvvZNUNgj+7RGw2uPiiJ0OpKlPym
+          qCOXgKXdMB/DYZAB9es3QO7J3clBAdtaGtxI7Ovdr6MC1QD8XLDv2PlFiA2FX+xjs2kIFS
+          yuAAAAgBS+9iDt3JUAm5h5p9p7YI8yhDHsHnMzCSKxhkmZdSk655keGUICjMjX4XvpXQ97
+          UtMKVecLiisJX8QdvBuQ/LalEvZUtTnjVGeQIq8tLEv/k83IB1H3uCn5IEyIl7PiYWndpU
+          IINBR7z7DdauBelCyCsPZUS60xqY1GZxI0UgtsAAAAFQCxDIFTSEs/wWqjtNuNTeXwGole
+          3QAAABlzaWdtYS5wcmF4LmhlcGF6dWxpYW4ubmV0AQ==
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-dss AAAAB3NzaC1kc3MAAACBAIDEsTNrzu0utD05K0ScQmuC1BmnJfBu3qR5GfynxDB2etnDi2NjApL9gGCTfrsd6wvQpmPMgnFlo+j7rjYRwY3ysFAjrc4LD0YqQruD9gU24mZ3SRss/vdfu86QeuAxZ3qpd3xBTWr+D3nLzl4kL25PQzVzYyOtrtuKtQMpKrJ3AAAAFQC9jg7LGc+/IT1aI6N/23VxJsXOLwAAAIB3iPQgTqi0CeKwnhsAQz9yQdpYhwauRPPT5GIVuPzRDCkOiRtXigHrztRj7ag9ti14xqney7772TVDYI/u0RsNrj4oidDqSpT8pqgjl4Cl3TAfw2GQAfXrN0Duyd3JQQHbWhrcSOzr3a+jAtUA/Fyw79j5RYgNhV/sY7NpCBUsrgAAAIAUvvYg7dyVAJuYeafae2CPMoQx7B5zMwkisYZJmXUpOueZHhlCAozI1+F76V0Pe1LTClXnC4orCV/EHbwbkPy2pRL2VLU541RnkCKvLSxL/5PNyAdR97gp+SBMiJez4mFp3aVCCDQUe8+w3WrgXpQsgrD2VEutMamNRmcSNFILbA== sigma.prax.hepazulian.net\n"
+      ecdsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAaAAAABNlY2RzYS
+          1zaGEyLW5pc3RwMjU2AAAACG5pc3RwMjU2AAAAQQSSnIAX/ASiilnuGgs8434DwABNpatB
+          QBLi1J0yn6lRuaB7/inQjBgd9474jtoJMaGF2y7PFyPaON+HR5C0BawPAAAAuOqd1JPqnd
+          STAAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJKcgBf8BKKKWe4a
+          CzzjfgPAAE2lq0FAEuLUnTKfqVG5oHv+KdCMGB33jviO2gkxoYXbLs8XI9o434dHkLQFrA
+          8AAAAgSjyTfHF37oIfJfubQxJwUZ4Z2a0l9pu2aFbIxGpWY3oAAAAZc2lnbWEucHJheC5o
+          ZXBhenVsaWFuLm5ldAECAwQFBgc=
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJKcgBf8BKKKWe4aCzzjfgPAAE2lq0FAEuLUnTKfqVG5oHv+KdCMGB33jviO2gkxoYXbLs8XI9o434dHkLQFrA8= sigma.prax.hepazulian.net\n"
+      ed25519:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACDshuYu8pYzu9e5lYg6t361CTtCDhAWwuhIpfCeMZ4AVQAAAKCo6cEoqOnB
+          KAAAAAtzc2gtZWQyNTUxOQAAACDshuYu8pYzu9e5lYg6t361CTtCDhAWwuhIpfCeMZ4AVQ
+          AAAEBBES6I4Zyi+4CBkX1SWLMwRQcnCUCadEG7udHksdEv4+yG5i7yljO717mViDq3frUJ
+          O0IOEBbC6Eil8J4xngBVAAAAGXNpZ21hLnByYXguaGVwYXp1bGlhbi5uZXQBAgME
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOyG5i7yljO717mViDq3frUJO0IOEBbC6Eil8J4xngBV sigma.prax.hepazulian.net\n"
+      rsa:
+        key: |
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          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
+          -----END OPENSSH PRIVATE KEY-----
+        pub: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiscXervm+uE3zUxbXB7y13QhZ9Bo1GFBtMKzDfEpgbkJSDUCs3DxLkR8ZQb4bcbeToBYhpiQDLm3xYKPtbu11XZdFLAN3/6sVE2cUffzdkWx3SVEXNH3cGwc8zZ1iazC0/byuAB4nwglC8xhOtcnSNp/aPHpdYjq17XXuZOmZRYBQEZ8QAKAZR6Oc2yqKbkw8YVDOuhBRVSlci6SMZCAtItwjNoUpQ3D+koSsWSNwkrKNWEE4LmzpWEDzDDJnKbTwUNb5hm9NdOydkDIjBuHetRABiUT5UAnERITzUIZnZwE+gDxQaOP6YGEz1kyci14h3sa5kf3lELkvv4KJXO+ApAhUJNxzRsv7OQMX3ylgXfmSY7oEWNkmPFco9IGd3kAo/mJxjMFq5gyOMD6SvGBlmmC830+UXBmzaXRVDCucACXbeL+PYyodJVqir76U9qM0kKOwSrEVphWEEW7kMUHvoUWgVWYllwIR5Cp3J6NFu0D84iBTpIFQnCtgO2Ar498= sigma.prax.hepazulian.net\n"

@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+
+# ----------------------------------------------------------------------
+#
+# ovs-up
+#
+# Take interface data from an GDBM file and use it to add ports to
+# OVS.
+
+# 2023-08-30:
+#   Explicitly set tag to 1 for access port
+
+# 2022-07-10:
+#  Add trunks supports
+
+# 2020-04-01:
+#   Import output to aways be sorted
+#
+# ----------------------------------------------------------------------
+
+use 5.28.0;
+use GDBM_File;
+use JSON;
+
+my %netdb;
+tie(%netdb, 'GDBM_File', '/locker/vm/net.db', &GDBM_READER, 0640);
+my $port = $ARGV[0];
+
+my $json = $netdb{$port};
+my $nic = from_json($json);
+
+printf "%s: { %s }\n", $port, join(" ", map({sprintf("%s: %s", $_, $nic->{$_})} sort(keys(%$nic))));
+
+my $bridge = $nic->{bridge};
+
+
+if (exists($nic->{vlans}))
+{
+    my $vlans = join(",", @{$nic->{vlans}});
+    qx/ovs-vsctl add-port $bridge $port -- set port $port trunks=$vlans/;
+}    
+elsif (exists($nic->{vlan}))
+{
+    my $vlan = $nic->{vlan};
+    qx/ovs-vsctl add-port $bridge $port -- set port $port tag=$vlan/;
+}
+else
+{
+    qx/ovs-vsctl add-port $bridge $port -- set port $port tag=1/;
+}
+qx/ip link set $port up/;
+

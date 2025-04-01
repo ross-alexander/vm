@@ -1,0 +1,17 @@
+vm:
+  name: netzero
+  fqdn: netzero.prax.hepazulian.net
+  mem: 2G
+  smp: 2
+  image:
+    format: qcow2
+    file: opensbsd-riscv64-root.qcow2
+    directory: /locker/software/openbsd/7.0/riscv64
+    device: virtio-blk-device
+  model: riscv64
+  mach: virt
+  bios: opensbi-riscv64-virt-fw_jump.bin
+  kernel: /locker/software/openbsd/7.0/riscv64/u-boot/u-boot-qemu-riscv64/u-boot.bin
+  nic:
+    - mac: 00:16:3e:11:00:01
+      bridge: intel

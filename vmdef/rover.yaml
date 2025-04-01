@@ -1,0 +1,26 @@
+---
+vm:
+  name: rover
+  fqdn: rover.prax.hepazulian.net
+  mem: 8G
+  smp: 8
+  image:
+    format: raw
+    directory: /srv/kvm/dstore/rover
+    size: 10G
+  model: riscv64
+  mach: virt
+  cpu: rv64,zba=true,zbb=true,zbc=true,v=true,vlen=256,elen=64,vext_spec=v1.0
+#  bios: /locker/riscv/opensbi-1.5.1-rv-bin/share/opensbi/lp64/generic/firmware/fw_jump.bin
+#  bios: /locker/riscv/opensbi-1.6-rv-bin/share/opensbi/lp64/generic/firmware/fw_jump.bin
+  bios: /locker/git/opensbi/build/platform/generic/firmware/fw_jump.bin
+  kernel: /locker/build/linux/linux-6.13.1-rv64/arch/riscv/boot/Image
+  append: "root=/dev/sda loglevel=7 init=/sbin/init"
+  nic:
+    - mac: 00:16:3e:02:01:01
+      bridge: intel
+  mounts:
+    - name: locker9p
+      type: 9p
+      path: /locker
+---

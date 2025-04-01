@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+
+# ----------------------------------------------------------------------
+#
+# ovs-up
+#
+# Take interface data from an GDBM file and use it to remote ports to
+# OVS.
+#
+# 2020-04-01:
+#   Import output to aways be sorted
+#
+# ----------------------------------------------------------------------
+
+use 5.28.0;
+use GDBM_File;
+use JSON;
+
+my %netdb;
+tie(%netdb, 'GDBM_File', '/locker/vm/net.db', &GDBM_READER, 0640);
+my $port = $ARGV[0];
+
+my $json = $netdb{$port};
+my $nic = from_json($json);
+
+printf "%s: { %s }\n", $port, join(" ", map({sprintf("%s: %s", $_, $nic->{$_})} keys(%$nic)));
+
+my $bridge = $nic->{bridge};
+my $vlan = $nic->{vlan};
+
+qx/ovs-vsctl del-port $bridge $port/;
+
